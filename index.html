@@ -372,7 +372,7 @@
      CONFIG
   ========================= */
 
-  const AIRTABLE_TOKEN = "patgzywa6P29C8Abs.9fb31b31b2b12132be39b0da160c8fe27a7ba404414369f05ff1f51278d108c5";
+  
 
   const BASE_ID = "apppjIMSlpOuE9S7G";
   const TABLE_NAME = "Cars";
@@ -421,19 +421,17 @@
         '<option value="">Loading cars...</option>';
 
 
-      const url =
-        `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}`;
+      const response = await fetch("/api/cars");
 
+const data = await response.json();
 
-      const response =
-        await fetch(url, {
-          method: "GET",
+if (!response.ok) {
+  throw new Error(
+    data?.error || "Unable to load cars."
+  );
+}
 
-          headers: {
-            Authorization:
-              `Bearer ${AIRTABLE_TOKEN}`
-          }
-        });
+cars = data;
 
 
       const data =
