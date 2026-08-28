@@ -1,757 +1,1508 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Car Rental Booking</title>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Prime Car Rental Booking</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background:
-        linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 100%);
+        linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 40%,
+          #334155 100%
+        );
+
       min-height: 100vh;
+
       padding: 24px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
     }
 
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
     .page {
+
       width: 100%;
+
       max-width: 1100px;
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: #ffffff;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      background: white;
+
       border-radius: 18px;
+
       overflow: hidden;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+
+      box-shadow:
+        0 18px 50px
+        rgba(0, 0, 0, 0.22);
     }
 
+
+    /* =========================
+       LEFT PANEL
+    ========================= */
+
     .left-panel {
+
       position: relative;
-      min-height: 620px;
+
+      min-height: 650px;
+
       background:
-        linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
-        url("https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1200");
+        linear-gradient(
+          rgba(15, 23, 42, 0.45),
+          rgba(15, 23, 42, 0.60)
+        ),
+
+        url(
+          "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        );
+
       background-size: cover;
+
       background-position: center;
+
       color: white;
+
       padding: 34px;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: space-between;
     }
 
+
     .brand {
+
       font-size: 28px;
+
       font-weight: 700;
+
       letter-spacing: 0.3px;
     }
 
+
     .hero-text h1 {
+
       margin: 0 0 14px;
+
       font-size: 38px;
+
       line-height: 1.15;
     }
 
+
     .hero-text p {
+
       margin: 0;
+
       max-width: 420px;
+
       line-height: 1.6;
-      color: rgba(255,255,255,0.92);
+
+      color:
+        rgba(255, 255, 255, 0.92);
+
       font-size: 15px;
     }
 
+
     .feature-boxes {
+
       display: flex;
+
       gap: 12px;
+
       flex-wrap: wrap;
     }
 
+
     .feature {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
+
+      background:
+        rgba(255, 255, 255, 0.12);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
       backdrop-filter: blur(6px);
+
       padding: 12px 14px;
+
       border-radius: 12px;
+
       min-width: 130px;
     }
 
+
     .feature strong {
+
       display: block;
+
       font-size: 14px;
+
       margin-bottom: 4px;
     }
 
+
     .feature span {
+
       font-size: 12px;
-      color: rgba(255,255,255,0.92);
+
+      color:
+        rgba(255, 255, 255, 0.92);
     }
+
+
+    /* =========================
+       RIGHT PANEL
+    ========================= */
 
     .right-panel {
+
       padding: 34px;
-      background: #ffffff;
+
+      background: white;
     }
 
+
     .right-panel h2 {
+
       margin: 0;
+
       font-size: 28px;
+
       color: #0f172a;
     }
 
+
     .subtitle {
-      margin: 8px 0 24px;
+
+      margin:
+        8px 0 24px;
+
       color: #64748b;
+
       font-size: 14px;
     }
 
+
+    /* =========================
+       FORM
+    ========================= */
+
     .form-grid {
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 16px;
     }
 
+
     .form-group {
+
       display: flex;
+
       flex-direction: column;
     }
 
+
     .full-width {
-      grid-column: 1 / -1;
+
+      grid-column:
+        1 / -1;
     }
 
+
     label {
+
       margin-bottom: 7px;
+
       font-size: 14px;
+
       font-weight: 600;
+
       color: #334155;
     }
 
+
     input,
     select {
+
       width: 100%;
+
       height: 46px;
-      border: 1px solid #d0d5dd;
+
+      border:
+        1px solid #d0d5dd;
+
       border-radius: 10px;
-      padding: 0 13px;
+
+      padding:
+        0 13px;
+
       font-size: 14px;
+
       color: #0f172a;
-      background: #fff;
+
+      background: white;
+
       outline: none;
-      transition: 0.2s ease;
+
+      transition:
+        0.2s ease;
     }
+
 
     input:focus,
     select:focus {
-      border-color: #f97316;
-      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+
+      border-color:
+        #f97316;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(249, 115, 22, 0.12);
     }
+
 
     select:disabled {
-      background: #f8fafc;
-      color: #94a3b8;
+
+      background:
+        #f8fafc;
+
+      color:
+        #94a3b8;
+
+      cursor:
+        not-allowed;
     }
+
+
+    /* =========================
+       CAR PREVIEW
+    ========================= */
 
     .car-preview {
+
       margin-top: 14px;
+
       display: none;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-left: 4px solid #f97316;
+
+      background:
+        #f8fafc;
+
+      border:
+        1px solid #e2e8f0;
+
+      border-left:
+        4px solid #f97316;
+
       border-radius: 12px;
-      padding: 14px;
+
+      padding: 16px;
     }
+
 
     .car-preview h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      color: #0f172a;
+
+      margin:
+        0 0 10px;
+
+      font-size: 17px;
+
+      color:
+        #0f172a;
     }
+
 
     .car-preview p {
-      margin: 4px 0;
+
+      margin:
+        6px 0;
+
       font-size: 13px;
-      color: #475569;
+
+      color:
+        #475569;
     }
+
+
+    /* =========================
+       BUTTON
+    ========================= */
 
     .submit-btn {
+
       width: 100%;
+
       height: 48px;
+
       border: none;
+
       border-radius: 10px;
-      background: linear-gradient(90deg, #f97316, #ea580c);
+
+      background:
+        linear-gradient(
+          90deg,
+          #f97316,
+          #ea580c
+        );
+
       color: white;
+
       font-size: 15px;
+
       font-weight: 700;
+
       cursor: pointer;
+
       margin-top: 4px;
-      transition: 0.2s ease;
+
+      transition:
+        0.2s ease;
     }
 
-    .submit-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(249, 115, 22, 0.22);
+
+    .submit-btn:hover:not(:disabled) {
+
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 10px 20px
+        rgba(249, 115, 22, 0.22);
     }
+
 
     .submit-btn:disabled {
+
       opacity: 0.55;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
+
+      cursor:
+        not-allowed;
     }
+
+
+    /* =========================
+       STATUS MESSAGE
+    ========================= */
 
     #status {
+
       display: none;
+
       margin-top: 14px;
-      padding: 11px 12px;
+
+      padding:
+        12px 14px;
+
       border-radius: 10px;
+
       font-size: 13px;
+
+      line-height: 1.5;
     }
+
 
     #status.success {
+
       display: block;
-      background: #ecfdf3;
-      color: #027a48;
+
+      background:
+        #ecfdf3;
+
+      color:
+        #027a48;
+
+      border:
+        1px solid #abefc6;
     }
+
 
     #status.error {
+
       display: block;
-      background: #fef2f2;
-      color: #b42318;
+
+      background:
+        #fef2f2;
+
+      color:
+        #b42318;
+
+      border:
+        1px solid #fecaca;
     }
 
-    @media (max-width: 900px) {
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media
+    (max-width: 900px) {
+
       .page {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
       }
+
 
       .left-panel {
-        min-height: 320px;
+
+        min-height:
+          320px;
       }
     }
 
-    @media (max-width: 640px) {
-      .form-grid {
-        grid-template-columns: 1fr;
+
+    @media
+    (max-width: 640px) {
+
+      body {
+
+        padding:
+          12px;
       }
 
-      .full-width {
-        grid-column: auto;
+
+      .form-grid {
+
+        grid-template-columns:
+          1fr;
       }
+
+
+      .full-width {
+
+        grid-column:
+          auto;
+      }
+
 
       .left-panel,
       .right-panel {
-        padding: 24px;
+
+        padding:
+          24px;
       }
+
 
       .hero-text h1 {
-        font-size: 28px;
+
+        font-size:
+          28px;
       }
     }
+
   </style>
+
 </head>
+
+
 <body>
 
-  <div class="page">
 
-    <!-- LEFT SIDE -->
-    <div class="left-panel">
-      <div class="brand">Prime Car Rental</div>
+<div class="page">
 
-      <div class="hero-text">
-        <h1>Find the right car for your next trip</h1>
-        <p>
-          Fast booking, quality vehicles, and professional service.
-          Choose your car and complete your booking in a few steps.
-        </p>
-      </div>
 
-      <div class="feature-boxes">
-        <div class="feature">
-          <strong>Easy Booking</strong>
-          <span>Quick and simple process</span>
-        </div>
-        <div class="feature">
-          <strong>Best Rates</strong>
-          <span>Affordable daily pricing</span>
-        </div>
-        <div class="feature">
-          <strong>Trusted Cars</strong>
-          <span>Reliable rental vehicles</span>
-        </div>
-      </div>
+  <!-- =========================
+       LEFT SIDE
+  ========================== -->
+
+  <div class="left-panel">
+
+    <div class="brand">
+      🚗 Prime Car Rental
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="right-panel">
-      <h2>Book a Car</h2>
-      <p class="subtitle">Fill in your details and select an available car.</p>
 
-      <form id="rentalForm">
-        <div class="form-grid">
+    <div class="hero-text">
 
-          <div class="form-group">
-            <label for="customerName">Name</label>
-            <input
-              type="text"
-              id="customerName"
-              placeholder="Full name"
-              required
-            />
-          </div>
+      <h1>
+        Find the right car
+        for your next trip
+      </h1>
 
-          <div class="form-group">
-            <label for="bookingDate">Booking Date</label>
-            <input
-              type="date"
-              id="bookingDate"
-              required
-            />
-          </div>
+      <p>
+        Fast booking,
+        quality vehicles,
+        and professional service.
+        Choose your car
+        and complete your booking
+        in just a few steps.
+      </p>
 
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input
-              type="tel"
-              id="phone"
-              placeholder="Phone number"
-              required
-            />
-          </div>
+    </div>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Email address"
-              required
-            />
-          </div>
 
-          <div class="form-group full-width">
-            <label for="carSelect">Car</label>
-            <select id="carSelect" required disabled>
-              <option value="">Loading cars...</option>
-            </select>
+    <div class="feature-boxes">
 
-            <div class="car-preview" id="carPreview">
-              <h3 id="carTitle"></h3>
-              <p><strong>Price per Day:</strong> Rs. <span id="carPrice"></span></p>
-              <p><strong>Deposit:</strong> Rs. <span id="carDeposit"></span></p>
-              <p id="carDescription"></p>
-            </div>
-          </div>
+      <div class="feature">
 
-          <div class="form-group full-width">
-            <button
-              type="submit"
-              id="submitButton"
-              class="submit-btn"
-              disabled
-            >
-              Submit Booking
-            </button>
-          </div>
-        </div>
+        <strong>
+          Easy Booking
+        </strong>
 
-        <div id="status"></div>
-      </form>
+        <span>
+          Quick and simple
+        </span>
+
+      </div>
+
+
+      <div class="feature">
+
+        <strong>
+          Best Rates
+        </strong>
+
+        <span>
+          Affordable pricing
+        </span>
+
+      </div>
+
+
+      <div class="feature">
+
+        <strong>
+          Trusted Cars
+        </strong>
+
+        <span>
+          Reliable vehicles
+        </span>
+
+      </div>
+
     </div>
 
   </div>
 
-  <script>
-  /* =========================
-     CONFIG
-  ========================= */
-
-  
-
-  const BASE_ID = "apppjIMSlpOuE9S7G";
-  const TABLE_NAME = "Cars";
-
-  const MAKE_WEBHOOK_URL =
-    "https://hook.us2.make.com/y5pb58ar99w0icv34o4ya4brlk33s1jm";
 
 
-  /* =========================
-     ELEMENTS
-  ========================= */
+  <!-- =========================
+       RIGHT SIDE
+  ========================== -->
 
-  const carSelect =
-    document.getElementById("carSelect");
+  <div class="right-panel">
 
-  const submitButton =
-    document.getElementById("submitButton");
+    <h2>
+      Book a Car
+    </h2>
 
-  const statusBox =
-    document.getElementById("status");
-
-  const carPreview =
-    document.getElementById("carPreview");
-
-  let cars = [];
+    <p class="subtitle">
+      Fill in your details
+      and select an available car.
+    </p>
 
 
-  function showStatus(message, type) {
-    statusBox.textContent = message;
-    statusBox.className = type;
-  }
+    <form id="rentalForm">
 
 
-  /* =========================
-     LOAD CARS FROM AIRTABLE
-  ========================= */
-
-  async function loadCars() {
-
-    try {
-
-      carSelect.disabled = true;
-      submitButton.disabled = true;
-
-      carSelect.innerHTML =
-        '<option value="">Loading cars...</option>';
+      <div class="form-grid">
 
 
-      const response = await fetch("/api/cars");
+        <!-- NAME -->
 
-const data = await response.json();
+        <div class="form-group">
 
-if (!response.ok) {
-  throw new Error(
-    data?.error || "Unable to load cars."
+          <label for="customerName">
+            Name
+          </label>
+
+          <input
+            type="text"
+            id="customerName"
+            placeholder="Full name"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- BOOKING DATE -->
+
+        <div class="form-group">
+
+          <label for="bookingDate">
+            Booking Date
+          </label>
+
+          <input
+            type="date"
+            id="bookingDate"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- PHONE -->
+
+        <div class="form-group">
+
+          <label for="phone">
+            Phone
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Phone number"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+          <label for="email">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Email address"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- CAR -->
+
+        <div
+          class="
+            form-group
+            full-width
+          "
+        >
+
+          <label for="carSelect">
+            Car
+          </label>
+
+
+          <select
+            id="carSelect"
+            required
+            disabled
+          >
+
+            <option value="">
+              Loading cars...
+            </option>
+
+          </select>
+
+
+
+          <!-- CAR DETAILS -->
+
+          <div
+            class="car-preview"
+            id="carPreview"
+          >
+
+            <h3 id="carTitle">
+            </h3>
+
+
+            <p>
+
+              <strong>
+                Price per Day:
+              </strong>
+
+              Rs.
+
+              <span id="carPrice">
+              </span>
+
+            </p>
+
+
+            <p>
+
+              <strong>
+                Deposit:
+              </strong>
+
+              Rs.
+
+              <span id="carDeposit">
+              </span>
+
+            </p>
+
+
+            <p id="carDescription">
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- SUBMIT -->
+
+        <div
+          class="
+            form-group
+            full-width
+          "
+        >
+
+          <button
+            type="submit"
+            id="submitButton"
+            class="submit-btn"
+            disabled
+          >
+
+            Submit Booking
+
+          </button>
+
+        </div>
+
+
+      </div>
+
+
+      <div id="status">
+      </div>
+
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+===================================================== */
+
+
+const MAKE_WEBHOOK_URL =
+  "https://hook.us2.make.com/y5pb58ar99w0icv34o4ya4brlk33s1jm";
+
+
+/*
+IMPORTANT:
+
+Airtable API token is NOT placed here.
+
+The browser calls:
+
+    /api/cars
+
+Then api/cars.js securely
+communicates with Airtable.
+*/
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+
+const carSelect =
+  document.getElementById(
+    "carSelect"
   );
+
+
+const submitButton =
+  document.getElementById(
+    "submitButton"
+  );
+
+
+const statusBox =
+  document.getElementById(
+    "status"
+  );
+
+
+const carPreview =
+  document.getElementById(
+    "carPreview"
+  );
+
+
+let cars = [];
+
+
+
+/* =====================================================
+   STATUS MESSAGE
+===================================================== */
+
+
+function showStatus(
+  message,
+  type
+) {
+
+  statusBox.textContent =
+    message;
+
+  statusBox.className =
+    type;
+
 }
 
-cars = data;
 
 
-      const data =
-        await response.json();
+/* =====================================================
+   LOAD CARS
+===================================================== */
 
 
-      if (!response.ok) {
+async function loadCars() {
 
-        console.error(
-          "Airtable error:",
-          data
-        );
+  try {
 
-        throw new Error(
-          data?.error?.message ||
-          "Unable to load cars."
-        );
-      }
+    /*
+    Disable everything
+    until cars are loaded
+    */
+
+    carSelect.disabled =
+      true;
+
+    submitButton.disabled =
+      true;
 
 
-      cars =
-        (data.records || [])
-          .map(record => ({
-            id: record.id,
+    carSelect.innerHTML =
+      `
+      <option value="">
+        Loading cars...
+      </option>
+      `;
 
-            name:
-              record.fields["Name"] || "",
 
-            description:
-              record.fields["Description"] || "",
+    /*
+    Call Vercel serverless API
+    */
 
-            price:
-              Number(
-                record.fields["Price per Day"] || 0
-              ),
+    const response =
+      await fetch(
+        "/api/cars",
+        {
+          method: "GET",
 
-            deposit:
-              Number(
-                record.fields["Deposit"] || 0
-              ),
+          headers: {
+            "Accept":
+              "application/json"
+          },
 
-            available:
-              record.fields["Available"] === true
-          }))
+          cache:
+            "no-store"
+        }
+      );
 
-          .filter(car =>
-            car.available &&
-            car.name
+
+    /*
+    Try to read JSON
+    */
+
+    const data =
+      await response.json();
+
+
+    console.log(
+      "Cars API response:",
+      data
+    );
+
+
+    /*
+    API error
+    */
+
+    if (!response.ok) {
+
+      throw new Error(
+        data?.error ||
+        "Unable to load cars."
+      );
+
+    }
+
+
+    /*
+    Make sure response
+    is an array
+    */
+
+    if (!Array.isArray(data)) {
+
+      throw new Error(
+        "Invalid response from cars API."
+      );
+
+    }
+
+
+    /*
+    Store cars
+    */
+
+    cars =
+      data;
+
+
+    /*
+    Reset dropdown
+    */
+
+    carSelect.innerHTML =
+      `
+      <option value="">
+        Select a car
+      </option>
+      `;
+
+
+    /*
+    Create dropdown options
+    */
+
+    cars.forEach(
+      (car) => {
+
+        const option =
+          document.createElement(
+            "option"
           );
 
 
-      carSelect.innerHTML =
-        '<option value="">Select a car</option>';
+        option.value =
+          car.id;
 
 
-      cars.forEach(car => {
-
-        const option =
-          document.createElement("option");
-
-        option.value = car.id;
-        option.textContent = car.name;
-
-        carSelect.appendChild(option);
-      });
+        option.textContent =
+          `${car.name} - Rs. ${Number(
+            car.price || 0
+          ).toLocaleString()} / day`;
 
 
-      if (cars.length === 0) {
-
-        carSelect.innerHTML =
-          '<option value="">No available cars</option>';
-
-        showStatus(
-          "No available cars found.",
-          "error"
+        carSelect.appendChild(
+          option
         );
 
-        return;
       }
+    );
 
 
-      carSelect.disabled = false;
-      submitButton.disabled = false;
+    /*
+    No available cars
+    */
 
-    }
-
-    catch (error) {
-
-      console.error(
-        "Airtable loading error:",
-        error
-      );
+    if (
+      cars.length === 0
+    ) {
 
       carSelect.innerHTML =
-        '<option value="">Unable to load cars</option>';
+        `
+        <option value="">
+          No available cars
+        </option>
+        `;
+
 
       showStatus(
-        error.message,
+        "No available cars found at the moment.",
         "error"
       );
+
+
+      return;
     }
+
+
+    /*
+    Enable form
+    */
+
+    carSelect.disabled =
+      false;
+
+
+    submitButton.disabled =
+      false;
+
+
+    /*
+    Remove previous
+    error message
+    */
+
+    statusBox.style.display =
+      "none";
+
+
+    console.log(
+      `${cars.length} cars loaded successfully.`
+    );
+
   }
 
 
-  /* =========================
-     CAR SELECTION
-  ========================= */
+  catch (error) {
 
-  carSelect.addEventListener(
-    "change",
-    function () {
+    console.error(
+      "Car loading error:",
+      error
+    );
+
+
+    carSelect.innerHTML =
+      `
+      <option value="">
+        Unable to load cars
+      </option>
+      `;
+
+
+    carSelect.disabled =
+      true;
+
+
+    submitButton.disabled =
+      true;
+
+
+    showStatus(
+      error.message ||
+      "Unable to load cars.",
+      "error"
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   SELECT CAR
+===================================================== */
+
+
+carSelect.addEventListener(
+  "change",
+
+  function () {
+
+    const selectedCar =
+      cars.find(
+        (car) =>
+          car.id ===
+          this.value
+      );
+
+
+    /*
+    Nothing selected
+    */
+
+    if (!selectedCar) {
+
+      carPreview.style.display =
+        "none";
+
+
+      return;
+    }
+
+
+    /*
+    Display car
+    */
+
+    document
+      .getElementById(
+        "carTitle"
+      )
+      .textContent =
+      selectedCar.name;
+
+
+    document
+      .getElementById(
+        "carPrice"
+      )
+      .textContent =
+      Number(
+        selectedCar.price || 0
+      ).toLocaleString();
+
+
+    document
+      .getElementById(
+        "carDeposit"
+      )
+      .textContent =
+      Number(
+        selectedCar.deposit || 0
+      ).toLocaleString();
+
+
+    document
+      .getElementById(
+        "carDescription"
+      )
+      .textContent =
+      selectedCar.description ||
+      "No description available.";
+
+
+    carPreview.style.display =
+      "block";
+
+  }
+);
+
+
+
+/* =====================================================
+   MINIMUM BOOKING DATE
+===================================================== */
+
+
+const bookingDateInput =
+  document.getElementById(
+    "bookingDate"
+  );
+
+
+bookingDateInput.min =
+  new Date()
+    .toISOString()
+    .split("T")[0];
+
+
+
+/* =====================================================
+   SUBMIT BOOKING
+===================================================== */
+
+
+document
+  .getElementById(
+    "rentalForm"
+  )
+  .addEventListener(
+    "submit",
+
+    async function (event) {
+
+
+      event.preventDefault();
+
+
+      /*
+      Get selected car
+      */
 
       const selectedCar =
         cars.find(
-          car =>
-            car.id === this.value
+          (car) =>
+            car.id ===
+            carSelect.value
         );
 
 
       if (!selectedCar) {
 
-        carPreview.style.display =
-          "none";
+        showStatus(
+          "Please select a car.",
+          "error"
+        );
+
 
         return;
+
       }
 
 
-      document
-        .getElementById("carTitle")
-        .textContent =
-        selectedCar.name;
+      /*
+      Booking payload
+      */
+
+      const formData = {
+
+        name:
+          document
+            .getElementById(
+              "customerName"
+            )
+            .value
+            .trim(),
 
 
-      document
-        .getElementById("carPrice")
-        .textContent =
-        selectedCar.price.toLocaleString();
+        bookingDate:
+          document
+            .getElementById(
+              "bookingDate"
+            )
+            .value,
 
 
-      document
-        .getElementById("carDeposit")
-        .textContent =
-        selectedCar.deposit.toLocaleString();
+        phone:
+          document
+            .getElementById(
+              "phone"
+            )
+            .value
+            .trim(),
 
 
-      document
-        .getElementById("carDescription")
-        .textContent =
-        selectedCar.description ||
-        "No description available.";
+        email:
+          document
+            .getElementById(
+              "email"
+            )
+            .value
+            .trim(),
 
 
-      carPreview.style.display =
-        "block";
+        car:
+          selectedCar.name,
+
+
+        carRecordId:
+          selectedCar.id,
+
+
+        pricePerDay:
+          selectedCar.price,
+
+
+        deposit:
+          selectedCar.deposit
+
+      };
+
+
+      console.log(
+        "Booking data:",
+        formData
+      );
+
+
+      try {
+
+        submitButton.disabled =
+          true;
+
+
+        submitButton.textContent =
+          "Submitting...";
+
+
+        /*
+        Send booking
+        to Make.com
+        */
+
+        const response =
+          await fetch(
+            MAKE_WEBHOOK_URL,
+
+            {
+
+              method:
+                "POST",
+
+
+              headers: {
+
+                "Content-Type":
+                  "application/json"
+
+              },
+
+
+              body:
+                JSON.stringify(
+                  formData
+                )
+
+            }
+          );
+
+
+        /*
+        Make.com error
+        */
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Unable to submit booking."
+          );
+
+        }
+
+
+        /*
+        Success
+        */
+
+        showStatus(
+          "Booking submitted successfully. We will contact you shortly.",
+          "success"
+        );
+
+
+        /*
+        Reset form
+        */
+
+        document
+          .getElementById(
+            "rentalForm"
+          )
+          .reset();
+
+
+        carPreview.style.display =
+          "none";
+
+
+        /*
+        Keep today's
+        minimum date
+        */
+
+        bookingDateInput.min =
+          new Date()
+            .toISOString()
+            .split("T")[0];
+
+
+        /*
+        Reload cars because
+        availability may change
+        */
+
+        await loadCars();
+
+      }
+
+
+      catch (error) {
+
+        console.error(
+          "Booking error:",
+          error
+        );
+
+
+        showStatus(
+          error.message ||
+          "Unable to submit booking.",
+          "error"
+        );
+
+      }
+
+
+      finally {
+
+        /*
+        Only enable button
+        if cars exist
+        */
+
+        submitButton.disabled =
+          cars.length === 0;
+
+
+        submitButton.textContent =
+          "Submit Booking";
+
+      }
+
     }
   );
 
 
-  /* =========================
-     MIN BOOKING DATE
-  ========================= */
 
-  document
-    .getElementById("bookingDate")
-    .min =
-    new Date()
-      .toISOString()
-      .split("T")[0];
+/* =====================================================
+   START APPLICATION
+===================================================== */
 
 
-  /* =========================
-     SUBMIT TO MAKE.COM
-  ========================= */
+loadCars();
 
-  document
-    .getElementById("rentalForm")
-    .addEventListener(
-      "submit",
-      async function (e) {
-
-        e.preventDefault();
-
-
-        const selectedCar =
-          cars.find(
-            car =>
-              car.id ===
-              carSelect.value
-          );
-
-
-        if (!selectedCar) {
-
-          showStatus(
-            "Please select a car.",
-            "error"
-          );
-
-          return;
-        }
-
-
-        const formData = {
-
-          name:
-            document
-              .getElementById("customerName")
-              .value
-              .trim(),
-
-          bookingDate:
-            document
-              .getElementById("bookingDate")
-              .value,
-
-          phone:
-            document
-              .getElementById("phone")
-              .value
-              .trim(),
-
-          email:
-            document
-              .getElementById("email")
-              .value
-              .trim(),
-
-          car:
-            selectedCar.name,
-
-          carRecordId:
-            selectedCar.id,
-
-          pricePerDay:
-            selectedCar.price,
-
-          deposit:
-            selectedCar.deposit
-        };
-
-
-        try {
-
-          submitButton.disabled = true;
-          submitButton.textContent =
-            "Submitting...";
-
-
-          const response =
-            await fetch(
-              MAKE_WEBHOOK_URL,
-              {
-                method: "POST",
-
-                headers: {
-                  "Content-Type":
-                    "application/json"
-                },
-
-                body:
-                  JSON.stringify(formData)
-              }
-            );
-
-
-          if (!response.ok) {
-
-            throw new Error(
-              "Unable to send booking."
-            );
-          }
-
-
-          showStatus(
-            "Booking submitted successfully.",
-            "success"
-          );
-
-
-          document
-            .getElementById("rentalForm")
-            .reset();
-
-
-          carPreview.style.display =
-            "none";
-
-        }
-
-        catch (error) {
-
-          console.error(
-            "Webhook error:",
-            error
-          );
-
-          showStatus(
-            "Unable to submit booking.",
-            "error"
-          );
-        }
-
-        finally {
-
-          submitButton.disabled = false;
-
-          submitButton.textContent =
-            "Submit Booking";
-        }
-      }
-    );
-
-
-  /* =========================
-     START
-  ========================= */
-
-  loadCars();
 
 </script>
+
+
 </body>
+
 </html>
